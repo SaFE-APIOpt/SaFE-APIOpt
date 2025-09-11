@@ -1,0 +1,27 @@
+<component name="InspectionProjectProfileManager">
+  <profile version="1.0">
+    <option name="myName" value="Project Default" />
+    <inspection_tool class="Eslint" enabled="true" level="WARNING" enabled_by_default="true" />
+    <inspection_tool class="PyPackageRequirementsInspection" enabled="true" level="WARNING" enabled_by_default="true">
+      <option name="ignoredPackages">
+        <value>
+          <list size="4">
+            <item index="0" class="java.lang.String" itemvalue="bs4" />
+            <item index="1" class="java.lang.String" itemvalue="flask_paginate" />
+            <item index="2" class="java.lang.String" itemvalue="flask" />
+            <item index="3" class="java.lang.String" itemvalue="gunicorn" />
+          </list>
+        </value>
+      </option>
+    </inspection_tool>
+    <inspection_tool class="PyUnresolvedReferencesInspection" enabled="true" level="WARNING" enabled_by_default="true">
+      <option name="ignoredIdentifiers">
+        <list>
+          <option value="svd.CodeT5.run_cl.construct_exemplar" />
+          <option value="svd.CodeT5.run_cl.*" />
+          <option value="keras.layers.Transformer" />
+        </list>
+      </option>
+    </inspection_tool>
+  </profile>
+</component>
