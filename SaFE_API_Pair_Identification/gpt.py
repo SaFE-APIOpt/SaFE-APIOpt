@@ -11,8 +11,7 @@ client = OpenAI(api_key=API_KEY)
 # Prompt template
 PROMPT_TEMPLATE = """
 Definition：
-Scenario-aware Functional Equivalent (SaFE) API pair refers to APIs that, regardless of whether their original functionalities are identical, can be employed interchangeably within the same application scenarios to achieve equivalent functionality.
-Task Description:
+Scenario-aware Functional Equivalent (SaFE) API pair referring to APIs that provide identical functionality, or that can accomplish equivalent coding tasks under specific application scenarios.
 The following content is derived from a SO post concerning the selection and application of  SaFE APIs. It includes the post title, question description, and corresponding answers, which may contain code snippets, references to API documentation, and discussions of specific programming functions or APIs.
 Your task is twofold:
 （1）Analyze the provided content to identify potential SaFE API pairs based on their functional equivalence and usage context.
