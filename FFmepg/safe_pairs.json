@@ -1,0 +1,74 @@
+[
+  {
+    "pair_id": "1",
+    "api_1": {
+      "name": "av_buffer_pool_init",
+      "description": "Allocate and initialize a buffer pool. Parameters: size of each buffer; alloc (allocator function, may be NULL for default allocator). Returns a newly created buffer pool, or NULL on error."
+    },
+    "api_2": {
+      "name": "av_buffer_pool_init2",
+      "description": "Allocate and initialize a buffer pool with a more complex allocator. Parameters: size of each buffer, arbitrary user data, allocator function for new buffers, and pool_free (cleanup for user data). Returns newly created pool or NULL on error."
+    },
+    "scenario_equivalence_reason": "Both functions create buffer pools for memory management and are functionally interchangeable when the buffer allocator does not require arbitrary user data or a custom cleanup function. If alloc is NULL, both will use av_buffer_alloc(); if alloc is non-NULL and does not require 'opaque', av_buffer_pool_init2 behaves identically to av_buffer_pool_init. In scenarios where no custom state or cleanup is needed, either API may be used to initialize a buffer pool."
+  },
+  {
+    "pair_id": "2",
+    "api_1": {
+      "name": "av_buffer_make_writable",
+      "description": "Create a writable reference from a buffer reference, avoiding data copy if possible. If already writable, no copy is made."
+    },
+    "api_2": {
+      "name": "av_buffer_realloc",
+      "description": "Reallocate a given buffer. If possible, resizes buffer in-place; otherwise, allocates a new buffer and copies data. *buf may be NULL to allocate a new buffer."
+    },
+    "scenario_equivalence_reason": "When the goal is to ensure a buffer is writable and has adequate size, both APIs may be used interchangeably if the buffer is already of enough size (no resize needed); av_buffer_make_writable will suffice, and if not, av_buffer_realloc will also ensure writability by allocating a new buffer when a reference count prevents in-place resizing. For code ensuring a single-writer and optional size adjustment (without changing contents), both may apply under constrained buffer lifetime scenarios."
+  },
+  {
+    "pair_id": "3",
+    "api_1": {
+      "name": "swr_build_matrix2",
+      "description": "Generate a channel mixing matrix. Utility for building custom matrices according to channel layouts and mix levels."
+    },
+    "api_2": {
+      "name": "swr_set_matrix",
+      "description": "Set a custom remix matrix for swresample context."
+    },
+    "scenario_equivalence_reason": "In scenarios where the caller needs to construct and apply a custom channel mixing matrix, swr_build_matrix2 can be used to generate the matrix and swr_set_matrix to apply it. However, if the caller already has the matrix coefficients (perhaps computed externally), using swr_set_matrix is functionally equivalent to generating via swr_build_matrix2 then setting. In a scenario with pre-computed coefficients and no further need for matrix parameterization, both APIs satisfy the interface for custom channel mixing."
+  },
+  {
+    "pair_id": "4",
+    "api_1": {
+      "name": "swr_convert_frame",
+      "description": "Convert samples from an input AVFrame to an output AVFrame. Handles allocation, FIFO buffering, rate conversion delay, and configuration mismatches."
+    },
+    "api_2": {
+      "name": "swr_convert",
+      "description": "Convert audio samples between formats, sample rates, or channel layouts, using planar/packed data pointers and explicit counts."
+    },
+    "scenario_equivalence_reason": "Both functions perform sample format/rate/channel conversion with a SwrContext. They are functionally equivalent when the AVFrame objects passed to swr_convert_frame have the same memory layout and attributes as would be passed manually to swr_convert (i.e., well-populated data pointers and metadata with no FIFO buffering required). When explicit memory management is handled externally to provide matching data buffers, they yield the same sample-conversion result."
+  },
+  {
+    "pair_id": "5",
+    "api_1": {
+      "name": "sws_scale",
+      "description": "Scale an image slice from source to destination with specified strides, formats, and sizes. Slices must be provided sequentially."
+    },
+    "api_2": {
+      "name": "sws_scale_frame",
+      "description": "Scale an image from a source to a destination AVFrame, handling multiple convenience operations inside a single call."
+    },
+    "scenario_equivalence_reason": "Both APIs handle image scaling between formats and resolutions. When the caller is processing an entire frame at once and not using per-slice operations or asynchronous calls, sws_scale and sws_scale_frame can be used interchangeably for equivalent results. sws_scale_frame internally manages the start, send/receive slices, and end steps that could otherwise be executed explicitly, making the two APIs equivalent in one-shot frame scaling scenarios."
+  },
+  {
+    "pair_id": "6",
+    "api_1": {
+      "name": "av_bprint_finalize",
+      "description": "Finalize a print buffer and return a permanent copy of its contents (if requested), or discard/frees the buffer if not."
+    },
+    "api_2": {
+      "name": "av_bprint_is_complete",
+      "description": "Test if the print buffer is complete (not truncated; i.e., no allocation or size errors have occurred)."
+    },
+    "scenario_equivalence_reason": "When the scenario guarantees the buffer was never truncated (e.g., the print never exceeded maximum size or allocation always succeeded), calling av_bprint_finalize to get the contents is interchangeable with simply checking completion via av_bprint_is_complete. In code where only finalized, complete print buffers are used, both APIs act as a terminal status check for buffer validity."
+  }
+]
