@@ -1,0 +1,4 @@
+DataFrame.head   DataFrame.iloc
+tf.add   tf.math.add
+tf.multiply   tf.math.multiply
+tf.reduce_sum   tf.math.reduce_sum

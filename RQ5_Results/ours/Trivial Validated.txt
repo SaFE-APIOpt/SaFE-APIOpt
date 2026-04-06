@@ -1,0 +1,17 @@
+numpy.in1d → numpy.isin
+numpy.transpose → U.T
+numpy.zeros → scipy.zeros
+numpy.ndarray.__eq__ → numpy.equal
+numpy.sum → numpy.ndarray.sum
+numpy.abs → numpy.fabs
+numba.njit → numba.njit(parallel=True)
+numpy.dot → numpy.ndarray @
+numpy.take → numpy.ndarray.take
+scipy.spatial.cKDTree.query → scipy.spatial.KDTree.query
+tensorflow.multiply → __mul__ (x * w)
+tensorflow.matmul → tensorflow.linalg.matmul
+numpy.reshape() → ndarray.reshape()
+numpy.abs → built-in abs
+pandas.Series.any → any
+pandas.DataFrame.div → pandas.DataFrame.__truediv__
+numpy.arange → numpy.range

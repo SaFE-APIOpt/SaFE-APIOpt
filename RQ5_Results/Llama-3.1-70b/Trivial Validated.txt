@@ -1,0 +1,7 @@
+numpy.max  numpy.amax
+numpy.max  numpy.amax
+DataFrame.agg  DataFrame.aggregate
+pandas.notna  pandas.notnull
+pandas.isna  pandas.isnull
+tf.nn.softmax  tf.keras.activations.softmax
+torch.sum  torch.Tensor.sum

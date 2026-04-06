@@ -1,0 +1,9 @@
+numpy.sum   numpy.add.reduce
+numpy.dot   numpy.matmul
+numpy.linalg.inv   numpy.linalg.solve
+numpy.array_equal   numpy.allclose
+DataFrame.dropna   DataFrame.fillna(method='ffill').dropna
+DataFrame.sort_values   DataFrame.sort_index
+scipy.linalg.inv   scipy.linalg.pinv
+scipy.optimize.minimize   scipy.optimize.minimize_scalar
+scipy.stats.norm.pdf   scipy.stats.norm.logpdf

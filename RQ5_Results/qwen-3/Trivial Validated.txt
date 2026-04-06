@@ -1,0 +1,7 @@
+numpy.add   numpy.ndarray.add
+numpy.eye   numpy.identity
+numpy.reshape   numpy.ndarray.reshape
+numpy.transpose   ndarray.T
+numpy.transpose   numpy.ndarray.transpose
+numpy.abs   numpy.absolute
+torch.view   torch.reshape

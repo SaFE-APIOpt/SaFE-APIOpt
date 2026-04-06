@@ -1,0 +1,13 @@
+numpy.transpose  numpy.ndarray.T
+numpy.max  numpy.amax
+numpy.min  numpy.amin
+numpy.all  numpy.ndarray.all
+numpy.array  numpy.asarray
+numpy.eye  numpy.identity
+pandas.DataFrame.iloc  pandas.DataFrame.head
+pandas.DataFrame.iloc  pandas.DataFrame.tail
+pandas.DataFrame.isna  pandas.DataFrame.isnull
+pandas.DataFrame.notna  pandas.DataFrame.notnull
+pandas.DataFrame.T  pandas.DataFrame.transpose
+tf.transpose  tf.linalg.matrix_transpose
+torch.Tensor.view  torch.Tensor.reshape
